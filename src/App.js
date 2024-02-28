@@ -3,6 +3,8 @@ import MyForm from './form';
 import ReducerTutorial from './ReducerTutorial';
 import ReducerTutorialSecond from './ReducerTutorialSecond';
 import CustomerList from './CustomerList'; 
+import PersonelForm from './PersonelForm';
+import PersonelList from './PersonelList';
 
 const StateTutorial = () => {
   const [counter, setCounter] = useState(0);
@@ -52,6 +54,7 @@ const StateTutorial = () => {
         )}
       </div>
       <CustomerList />
+      <PersonelList/>
     </div>
   );
 };

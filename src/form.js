@@ -9,7 +9,7 @@ const Form = ({ onFormSubmit }) => {
     city: '',
     birthday: '2014-02-09',
     job: '',
-    products: [] // Şimdi products bir dizi olarak tanımlanmış
+    products: []
   });
 
   const handleProductSubmit = (productInfo) => {
@@ -18,9 +18,7 @@ const Form = ({ onFormSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form verilerini ana bileşene iletmek için prop fonksiyonunu çağır
     onFormSubmit(customerInfo);
-    // Formu sıfırla
     setCustomerInfo({
       name: '',
       surname: '',
@@ -32,6 +30,7 @@ const Form = ({ onFormSubmit }) => {
     });
   };
 
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -41,7 +40,7 @@ const Form = ({ onFormSubmit }) => {
       </label>
       <br />
       <label>
-        Surname:
+        xxSurname:
         <input type="text" value={customerInfo.surname} 
         onChange={(e) => setCustomerInfo({ ...customerInfo, surname: e.target.value })} />
       </label>
@@ -74,18 +73,20 @@ const Form = ({ onFormSubmit }) => {
       <br />
       <label>
         Products:
-        <Product onProductSubmit={handleProductSubmit} />
-      </label>
-      <div>
-        <ul>
-          {customerInfo.products.map((product, index) => (
-            <li key={index}>{product}</li>
-          ))}
-        </ul>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
+      
+       <Product onProductSubmit={handleProductSubmit} />
+<div>
+  <ul>
+    {customerInfo.products.map((product, index) => (
+      <li key={index}>{product}</li>
+    ))}
+  </ul>
+</div>
+
+<button type="submit">Submit</button>
+</label>
+</form>
+);
 };
 
 export default Form;
