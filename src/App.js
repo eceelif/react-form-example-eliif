@@ -11,7 +11,21 @@ const StateTutorial = () => {
   const [deneme, setDeneme] = useState("denemeState");
   const [inputValue, setInputValue] = useState("elif");
   const [formData, setFormData] = useState(null);
+  const [selectedTitle, setSelectedTitle] = useState(null);
 
+  const handleTitleClick = (title) => {
+    setSelectedTitle(title);
+  };
+  const renderComponent = () => {
+    switch (selectedTitle) {
+      case 'personelList':
+        return <PersonelList />;
+      case 'customerList':
+        return <CustomerList />;
+      default:
+        return null;
+    }
+  };
   const increment = () => {
     setCounter(counter + 1);
   }
@@ -32,17 +46,16 @@ const StateTutorial = () => {
 
   return (
     <div>
-      {counter} <button onClick={increment}>Increment</button>
+     {/* {counter} <button onClick={increment}>Increment</button>
       {inputValue}<input placeholder='enter something..' value={inputValue} onChange={onChange} />
       {deneme}<button onClick={denemeInput}>deneme input</button>
       <ReducerTutorial />
       <ReducerTutorialSecond />
-
-      <div>
+ <div>
         <h1>React Form App</h1>
         <MyForm onFormSubmit={handleFormSubmit} />
         {formData && (
-          <div>
+        <div> 
             <h2>Submitted Form Data</h2>
             <p>Name: {formData.name}</p>
             <p>Surname: {formData.surname}</p>
@@ -54,8 +67,15 @@ const StateTutorial = () => {
         )}
       </div>
       <CustomerList />
-      <PersonelList/>
+      <PersonelList/> */}
+      <div> 
+        <h3 onClick={() => handleTitleClick('personelList')}>Personel List</h3>
+        <h3 onClick={() => handleTitleClick('customerList')}>Customer List</h3>
+      </div>
+      
+      {renderComponent()}
     </div>
+    
   );
 };
 
